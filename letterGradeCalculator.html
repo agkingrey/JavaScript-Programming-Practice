@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+ <html>
+  <head>
+    <title>Letter Grade Calculator</title>
+  </head>
+  <body>
+    <h1>Welcome to the Letter Grade Calculator</h1>
+    <h2>Please enter your percentages as whole numbers. EX: 90.5% = 90.5</h2>
+    <script type="text/javascript">
+      //function that will take in a variable, userGrade, and find what
+      //letter grade corresponds to the percentage
+      var gradeCalc = function(userGrade){
+        var letterGrade; //variable responsible for holding the letter grade
+        //i use this first if and the else statement at the bottom to catch
+        //any invalid grade
+        if(userGrade > 100)
+        {
+          letterGrade ='Please provide a valid score';
+        }
+        else if(userGrade >= 93)
+        {
+          letterGrade = 'A';
+        }
+        else if(userGrade >= 90)
+        {
+          letterGrade = 'A-';
+        }
+        else if(userGrade >= 87)
+        {
+          letterGrade = 'B+';
+        }
+        else if(userGrade >= 83)
+        {
+          letterGrade = 'B';
+        }
+        else if(userGrade >= 80)
+        {
+          letterGrade = 'B-';
+        }
+        else if(userGrade >= 70)
+        {
+          letterGrade = 'C';
+        }
+        else if(userGrade >= 60)
+        {
+          letterGrade = 'D';
+        }
+        else if(userGrade < 60 && userGrade >= 0)
+        {
+          letterGrade = 'F';
+        }
+        else
+        {
+          letterGrade = 'Please provide a valid score';
+        }
+
+        //now that we have which letter it is, lets print it back formatted
+        console.log('The score provided was: ', userGrade, ' and this is a:');
+        console.log(letterGrade);
+      }
+
+      //now here, in the "driver" part of my script, I'm going to call my gradeCalc
+      //function, using the variables given as the parameter
+      gradeCalc(100);
+      gradeCalc(83);
+      gradeCalc(74);
+      gradeCalc(61);
+      gradeCalc(58);
+      gradeCalc(90);
+      gradeCalc(92.9);
+      gradeCalc(89.9);
+      gradeCalc(101);
+      gradeCalc(-1);
+    </script>
+  </body>
+ </html>

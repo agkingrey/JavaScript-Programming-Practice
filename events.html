@@ -1,0 +1,20 @@
+<html>
+<body>
+  <h1>Welcome to my events homework page!</h1>
+  <h1 id="example">Say Hi!</h1>
+</body>
+
+<script type="text/javascript">
+  //grab the element by id
+  var hiThere = document.getElementById("example");
+
+  //define the function that will respond, printing hi everytime I move the mouse
+  var onMouseMove = function()
+  {
+    console.log("Hi.");
+  }
+  
+  //add the event listener
+  hiThere.addEventListener("mousemove", onMouseMove);
+</script>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<style type="text/css">
+
+<head>
+  <title>Palindromes/Austin Kingrey</title>
+</head>
+</style>
+<body>
+<h1>Palndromes</h1>
+<p>
+  Open the program in console to see whether the words in the list below are palindromes.
+</p>
+<p>Example input</p>
+<ul>
+    <li>sherpa</li>
+    <li>stewie</li>
+    <li>anna</li>
+    <li>lil aquiggle</li>
+    <li>racecar</li>
+    <li>tacocat</li>
+</ul>
+
+
+</body>
+
+
+<script type="text/javascript">
+
+
+    function isWordAPalindrome(word) {
+        var backwardsWord = ''; //using this as my backwards word string
+
+        console.log(''); //simply making a newline for easier console reading
+        console.log('The word provided is: ', word);
+
+        //using this for to loop through the word backwards to make a new string
+        for (var i = word.length; i >= 0; i--)
+        {
+           //building my variable backwards by grabbing the character of the string
+           //at position "i"
+           var wordBuilder = word.charAt(i);
+
+           //concat. the letter on to the end of backwardsWord
+           backwardsWord = backwardsWord.concat(wordBuilder);
+        }
+        //if statement comparing the word and bakwardswords and letting the user
+        //know if the word is a palindrome
+        if (word === backwardsWord)
+        {
+          console.log(word, 'is a palindrome');
+        }
+        else
+        {
+          console.log(word, 'is not a palindrome');
+        }
+    }
+
+
+    isWordAPalindrome('sherpa'); 		    //should console.log() 'sherpa is not a palindrome'
+    isWordAPalindrome('stewie'); 		    //should console.log() 'stewie is not a palindrome'
+    isWordAPalindrome('anna'); 		        //should console.log() 'anna is a palindrome'
+    isWordAPalindrome('lil squiggle'); 		//should console.log() 'lil squiggle is not a palindrome'
+    isWordAPalindrome('racecar'); 		    //should console.log() 'racecar is a palindrome'
+    isWordAPalindrome('tacocat'); 		    //should console.log() 'tacocat is a palindrome'
+
+
+</script>
+</html>

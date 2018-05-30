@@ -1,0 +1,64 @@
+<html>
+<style type="text/css">
+
+
+</style>
+<body>
+<h1>Assignment - Palindrome Part 2</h1>
+
+
+<p>Example input</p>
+<ul>
+    <li>sherpa</li>
+    <li>stewie</li>
+    <li>mom</li>
+    <li>noon</li>
+    <li>radar</li>
+    <li>lil squiggle</li>
+    <li>racecar</li>
+</ul>
+
+<p>Output:</p>
+<h2>Please check console.</h2>
+</body>
+
+
+<script type="text/javascript">
+
+
+    function isWordAPalindrome(word) {
+        console.log(''); //simply making a newline for easier console reading
+        console.log('The word provided is: ', word);
+
+        //first put the word into an array of leterss
+        var splitEx = word.split("");
+
+        // then reverse the array I created above
+        var reverseArray = splitEx.reverse();
+
+        //rejoin the array elements into a string
+        var final = reverseArray.join("");
+
+        //check to see if the word is a palindrome
+        if(word == final)
+        {
+          console.log(word, "is a palindrome.");
+        }
+        else
+        {
+          console.log(word, "is not a palindrome.");
+        }
+    }
+
+
+    isWordAPalindrome('sherpa'); 		    //should console.log() 'sherpa is not a palindrome'
+    isWordAPalindrome('stewie'); 		    //should console.log() 'stewie is not a palindrome'
+    isWordAPalindrome('mom'); 		        //should console.log() 'mom is a palindrome'
+    isWordAPalindrome('noon'); 		        //should console.log() 'noon is a palindrome'
+    isWordAPalindrome('radar'); 		    //should console.log() 'radar is a palindrome'
+    isWordAPalindrome('lil squiggle'); 		//should console.log() 'lil squiggle is not a palindrome'
+    isWordAPalindrome('tacocat'); 		    //should console.log() 'tacocat is a palindrome'
+
+
+</script>
+</html>

@@ -1,0 +1,67 @@
+<html>
+<style type="text/css">
+    /* uncomment to see borders around your table cells. */
+    td {
+        border: 1px solid black;
+    }
+</style>
+<body>
+
+<h1>Assignment - Shapes</h1>
+<p>
+  Enjoy My Shapes!
+</p>
+
+<h3>Output:</h3>
+<div id="homework">
+    <h2>Square</h2>
+    <div id="square">
+    </div>
+    <h2>Triangle</h2>
+    <div id="triangle">
+
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+//here we are creating our square table
+var sqtable = '';  //creating a variable for our table
+//itterating through collumns
+for( var x = 0; x < 10 ; x++)
+{
+  sqtable += '<tr>';
+    //itterating through rows
+    for(var y = 0; y < 10; y++)
+    {
+      sqtable += '<td>' + '*' + '</td>'
+    }
+  sqtable += '</tr>';
+}
+//print the table where the element id 'square' is
+document.getElementById("square").innerHTML = '<table>' + sqtable + '</table>';
+
+//same thing, but for our triangle
+var trtable ='';
+
+//collumns, same as before
+for(var x = 0; x < 10; x++)
+{
+  trtable += '<tr>';
+  //this time, we set the rows equal to the number of collumns, one more each time
+  for(var y = 0; y <= x; y++)
+  {
+    trtable += '<td>' + '*' + '</td>'
+  }
+  trtable += '</tr>';
+}
+//print the triangle in triangle element
+document.getElementById("triangle").innerHTML = '<table>' +trtable + '</table>';
+    /* this will help me see that your tables are made correctly */
+    function logTableOutput() {
+        console.log(document.querySelector('#square').innerHTML)
+        console.log(document.querySelector('#triangle').innerHTML)
+    }
+    logTableOutput();
+</script>
+</html>

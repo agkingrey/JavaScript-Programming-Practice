@@ -1,0 +1,87 @@
+<html>
+<head>
+  <style>
+    .slideshow {
+      display: block;
+      width: 50%;
+      border: 2px solid black;
+    }
+    /* This will make all slides disappear by default */
+    .slides {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!--Create div for slideshow -->
+  <div class="slideshow">
+    <!-- Images stored here -->
+    <div class="slides">
+      <img src="garden.jpg" style="width: 100%;">
+    </div>
+    <div class="slides">
+      <img src="lilsquiggle.jpg" style="width: 100%;">
+    </div>
+    <div class="slides">
+      <img src="stewie.jpg" style="width: 100%;">
+    </div>
+  </div>
+
+  <!--Previous/Next buttons -->
+  <button id="previous">Previous</button>
+  <button id="next">Next</button>
+</body>
+<script type="text/javascript">
+  //variable that holds which photo were on, default is 0(first image) when page Open
+  var index = 0;
+  //grabbing the prev/ next button for use in their respetive functions
+  var lvPrev = document.getElementById("previous");
+  var lvNext = document.getElementById("next");
+  //grab the slides in an Array
+  var lvSlides = document.getElementsByClassName("slides");
+
+  slideView(index); // call on page load
+
+
+  //function responsible showing the photos/slides
+  function slideView(pIndex)
+  {
+    //first lets hide all of the images
+    for(var i = 0; i < lvSlides.length; i++)
+    {
+      lvSlides[i].style.display = "none";
+    }
+    //display the current slide based on index
+    lvSlides[pIndex].style.display = "block";
+  }
+
+  //function to change the index if previous is clicked
+  var previousClick = function()
+  {
+    index--;
+    //rotates index around if user trys to go previous past first slide
+    if (index < 0)
+    {
+      index = lvSlides.length - 1;
+    }
+    slideView(index);
+  }
+
+  //function to change index if user presses next button
+  var nextClick = function()
+  {
+    index++;
+    //responsible for rotating back to original if pIndex gets past limit
+    if (index >= lvSlides.length)
+    {
+      index = 0;
+    }
+    slideView(index);
+  }
+
+  //add event listeners
+  lvPrev.addEventListener("click",previousClick);
+  lvNext.addEventListener("click",nextClick);
+
+</script>
+</html>

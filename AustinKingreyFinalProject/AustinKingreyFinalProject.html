@@ -1,0 +1,137 @@
+<html>
+<head>
+  <style>
+    .slideshow {
+      display: block;
+      width: 50%;
+    }
+    /* This will make all slides disappear by default */
+    .slides {
+      display: none;
+    }
+    /*Makes my warning box border red*/
+    #warningBox {
+      display: none;
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+  <!--Create div for slideshow -->
+  <div class="slideshow">
+    <!-- Images stored here -->
+    <div class="slides">
+      <img src="garden.jpg" style="width: 100%;">
+    </div>
+    <div class="slides">
+      <img src="lilsquiggle.jpg" style="width: 100%;">
+    </div>
+    <div class="slides">
+      <img id="stewie" src="stewie.jpg" style="width: 100%;">
+    </div>
+    <!-- Placeholder to add new image eventually -->
+    <div id="newImageDiv" class="slides"></div>
+  </div>
+
+  <!-- Warning box div if user leaves url field blank and pushes add new image -->
+  <div id="warningBox">
+  </div>
+  <!--Previous/Next buttons -->
+  <button id="previous">Previous</button>
+  <button id="next">Next</button>
+  <br>
+  <!-- input box for the image url and label for it -->
+  <label for="imageInput">New Image URL:</label>
+  <br>
+  <input type="input" id="imageInput" >
+  <button id="submitNewImage">Add New Image</>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  //variable that holds which photo were on, default is 0(first image) when page Open
+  var index = 0;
+  //grabbing the prev/ next button for use in their respetive functions
+  var lvPrev = document.getElementById("previous");
+  var lvNext = document.getElementById("next");
+  //grab the slides in an Array
+  var lvSlides = document.getElementsByClassName("slides");
+  //collecting the image input and the correlating button
+  var lvImgSubmitBtn = document.getElementById("submitNewImage");
+
+
+  slideView(index); // call on page load
+
+  //function responsible showing the photos/slides
+  function slideView(pIndex)
+  {
+    //first lets hide all of the images
+    for(var i = 0; i < lvSlides.length; i++)
+    {
+      lvSlides[i].style.display = "none";
+    }
+    //display the current slide based on index
+    lvSlides[pIndex].style.display = "block";
+  }
+
+  //function to change the index if previous is clicked
+  var previousClick = function()
+  {
+    index--;
+    //rotates index around if user trys to go previous past first slide
+    if (index < 0)
+    {
+      index = lvSlides.length - 1;
+    }
+    slideView(index);
+  }
+
+  //function to change index if user presses next button
+  var nextClick = function()
+  {
+    index++;
+    //responsible for rotating back to original if pIndex gets past limit
+    if (index >= lvSlides.length || lvSlides[index].innerHTML=="")
+    {
+      index = 0;
+    }
+    console.log(lvSlides[index].innerHTML);
+    slideView(index);
+  }
+
+  //Add new Image Function.
+  var addImage = function()
+  {
+    //grab the image source from the input textbox
+    var newImageURL = document.getElementById("imageInput").value;
+    //Will only work if text box isn't left blank
+    if (newImageURL != "")
+    {
+      //create new image object and add the image source to it
+      var newImage = document.createElement("IMG");
+      $(newImage).attr("src",newImageURL);
+      //add the new element by changing the html of the div using jquery
+      $("#newImageDiv").html(newImage);
+      //this section resets the warning box if the user enters a valid photo
+      $("#warningBox").html("");
+      $("#warningBox").css("display", "none");
+      //reset the text of imageINput textbox
+      $("#imageInput").val("");
+
+    }
+    else
+    {
+      //change the html of the div to warn the user and add a border
+      $("#warningBox").css("display", "block");
+      $("#warningBox").html("<p>Please enter a valid photo URL</p>");
+    }
+  }
+
+
+  //add event listeners
+  lvPrev.addEventListener("click",previousClick);
+  lvNext.addEventListener("click",nextClick);
+  lvImgSubmitBtn.addEventListener("click",addImage);
+
+
+</script>
+</html>
